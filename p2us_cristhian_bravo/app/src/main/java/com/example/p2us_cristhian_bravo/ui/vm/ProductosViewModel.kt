@@ -115,10 +115,10 @@ class ProductosViewModel(
         obtenerProductos()
     }
 
-    fun guardar(fileOutputStream: FileOutputStream, tareas:List<Producto>) {
+    fun guardar(fileOutputStream: FileOutputStream, productos:List<Producto>) {
         fileOutputStream.use { fos ->
             ObjectOutputStream(fos).use { oos ->
-                oos.writeObject(tareas)
+                oos.writeObject(productos)
             }
         }
     }
@@ -133,7 +133,7 @@ class ProductosViewModel(
         } catch (fnfex: FileNotFoundException) {
             emptyList<Producto>()
         } catch (ex:Exception) {
-            Log.e("TareaDiskDataSource", "obtener ex:Exception ${ex.toString()}")
+            Log.e("ProductoDiskDataSource", "obtener ex:Exception ${ex.toString()}")
             emptyList<Producto>()
         }
     }

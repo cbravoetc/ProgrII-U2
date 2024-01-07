@@ -25,10 +25,10 @@ class ProductoDiskDataSource() {
         }
     }
 
-    fun guardar(fileOutputStream: FileOutputStream, tareas:List<Producto>) {
+    fun guardar(fileOutputStream: FileOutputStream, productos:List<Producto>) {
         fileOutputStream.use { fos ->
             ObjectOutputStream(fos).use { oos ->
-                oos.writeObject(tareas)
+                oos.writeObject(productos)
             }
         }
     }

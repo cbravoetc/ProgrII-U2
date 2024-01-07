@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">List App</string>
+    <string name="producto_form_ejemplo">Product</string>
+    <string name="producto_form_eliminar">Remove product</string>
+    <string name="producto_form_agregar">Add Product</string>
+    <string name="carro">Shopping cart</string>
+    <string name="stw_setting_ordena_alfa">Order alphabetically</string>
+    <string name="stw_settings_por_comprar">Show items to buy first</string>
+    <string name="top_settings_configuracion">Settings</string>
+    <string name="top_home_title">Shopping List</string>
+    <string name="txt_atras">Back</string>
+    <string name="txtmensaje">Added Product</string>
+</resources>

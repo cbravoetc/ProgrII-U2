@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">App Lista</string>
+    <string name="producto_form_ejemplo">Producto</string>
+    <string name="producto_form_eliminar">Eliminar producto</string>
+    <string name="producto_form_agregar">Agregar Producto</string>
+    <string name="carro">Carro</string>
+    <string name="stw_setting_ordena_alfa" >Ordena Alfabeticamente</string>
+    <string name="stw_settings_por_comprar">Mostrar primero items por comprar</string>
+    <string name="top_settings_configuracion">Configuración</string>
+    <string name="top_home_title">Lista de compras</string>
+    <string name="txt_atras">Atrás</string>
+    <string name="txtmensaje">Producto Agregado</string>
+</resources>

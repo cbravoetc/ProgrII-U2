@@ -9,7 +9,7 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 
 class ProductosRepository(
-    private val productoDataSource: ProductoMemoryDataSource = ProductoMemoryDataSource(),
+    private val productoMemoryDataSource: ProductoMemoryDataSource = ProductoMemoryDataSource(),
     private val productoDiskDataSource: ProductoDiskDataSource = ProductoDiskDataSource()
 
 ) {
@@ -17,34 +17,34 @@ class ProductosRepository(
     private val _productosStream = MutableStateFlow(listOf<Producto>())
 
     fun getProductosEnDisco(fileInputStream: FileInputStream) {
-        val tareas = productoDiskDataSource.obtener(fileInputStream)
-        insertar(*tareas.toTypedArray())
+        val productos = productoDiskDataSource.obtener(fileInputStream)
+        insertar(* productos.toTypedArray())
     }
 
     fun guardarProductosEnDisco(fileOutputStream: FileOutputStream) {
-        productoDiskDataSource.guardar(fileOutputStream, productoDataSource.obtenerTodas())
+        productoDiskDataSource.guardar(fileOutputStream, productoMemoryDataSource.obtenerTodas())
     }
 
 
     fun getProductosStream():StateFlow<List<Producto>> {
         _productosStream.update {
-            ArrayList(productoDataSource.obtenerTodas())
+            ArrayList(productoMemoryDataSource.obtenerTodas())
         }
         return _productosStream.asStateFlow()
     }
 
     fun insertar(vararg productos: Producto) {
-        productoDataSource.insertar(*productos) // spread operator (*)
+        productoMemoryDataSource.insertar(*productos) // spread operator (*)
         getProductosStream()
     }
 
     fun eliminar(producto: Producto) {
-        productoDataSource.eliminar(producto)
+        productoMemoryDataSource.eliminar(producto)
         getProductosStream()
     }
 
     fun cambiarEstadoProducto(productoId: String, comprado: Boolean) {
-        productoDataSource.cambiarEstadoProducto(productoId, comprado)
+        productoMemoryDataSource.cambiarEstadoProducto(productoId, comprado)
         _productosStream.update { productos ->
             productos.map { if (it.id == productoId) it.copy(comprado = comprado) else it }
         }

@@ -20,7 +20,7 @@ class ProductoDiskDataSource() {
         } catch (fnfex:FileNotFoundException) {
             emptyList<Producto>()
         } catch (ex:Exception) {
-            Log.e("TareaDiskDataSource", "obtener ex:Exception ${ex.toString()}")
+            Log.e("ProductoDiskDataSource", "obtener ex:Exception ${ex.toString()}")
             emptyList<Producto>()
         }
     }

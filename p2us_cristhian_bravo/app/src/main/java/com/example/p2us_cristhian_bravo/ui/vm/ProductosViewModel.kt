@@ -54,6 +54,7 @@ class ProductosViewModel(
         job = viewModelScope.launch {
             val productosStream = productosRepository.getProductosStream()
             productosStream.collect { productosActualizadas ->
+                Log.v("ProductosViewModel", "obtenerProductos() update{}")
                 val productosOrdenados = when {
                     _ordenAlfabetico.value -> {
                         productosActualizadas.sortedBy { it.descripcion }
